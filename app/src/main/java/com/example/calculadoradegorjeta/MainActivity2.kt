@@ -18,8 +18,8 @@ class MainActivity2 : AppCompatActivity() {
 
         val edtValor = findViewById<EditText>(R.id.edtValor)
         val edtPorcentagem = findViewById<EditText>(R.id.edtPorcentagem)
-        val tvPessoas = findViewById<TextView>(R.id.textView7)
-        val edtValorTotal = findViewById<TextView>(R.id.textView10)
+        val tvPessoas = findViewById<TextView>(R.id.tvPessoas)
+        val edtValorTotal = findViewById<TextView>(R.id.tvResultado)
         val btnMenos = findViewById<Button>(R.id.buttonMenos)
         val btnMais = findViewById<Button>(R.id.buttonMais)
         val btnCalcular = findViewById<Button>(R.id.buttonCalcular)
