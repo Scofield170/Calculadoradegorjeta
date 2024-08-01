@@ -8,7 +8,6 @@
     android:background="@drawable/gradiente"
     tools:context=".MainActivity2">
 
-
     <TextView
         android:id="@+id/tvValor"
         android:layout_width="137dp"
