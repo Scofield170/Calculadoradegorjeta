@@ -8,45 +8,42 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.calculadoradegorjeta.databinding.ActivityMain2Binding
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity2 : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMain2Binding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMain2Binding.inflate(layoutInflater)
+        setContentView(binding.root)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main2)
-
-        val edtValor = findViewById<EditText>(R.id.edtValor)
-        val edtPorcentagem = findViewById<EditText>(R.id.edtPorcentagem)
-        val tvPessoas = findViewById<TextView>(R.id.tvPessoas)
-        val edtValorTotal = findViewById<TextView>(R.id.tvResultado)
-        val btnMenos = findViewById<Button>(R.id.buttonMenos)
-        val btnMais = findViewById<Button>(R.id.buttonMais)
-        val btnCalcular = findViewById<Button>(R.id.buttonCalcular)
 
         var pessoas = 0
 
-        tvPessoas.text = pessoas.toString()
+        binding.tvPessoas.text = pessoas.toString()
 
-        btnMais.setOnClickListener {
+        binding.buttonMais.setOnClickListener {
             pessoas++
-            tvPessoas.text = pessoas.toString()
+            binding.tvPessoas.text = pessoas.toString()
         }
 
-        btnMenos.setOnClickListener {
+        binding.buttonMenos.setOnClickListener {
             if (pessoas > 0) {
                 pessoas--
-                tvPessoas.text = pessoas.toString()
+                binding.tvPessoas.text = pessoas.toString()
             }
         }
 
-        btnCalcular.setOnClickListener {
-            val valorStg = edtValor.text.toString()
-            val porcentagemStg = edtPorcentagem.text.toString()
+        binding.buttonCalcular.setOnClickListener {
+            val valorStg = binding.edtValor.text.toString()
+            val porcentagemStg = binding.edtPorcentagem.text.toString()
 
             if (valorStg.isEmpty() || porcentagemStg.isEmpty() || pessoas == 0) {
                 Snackbar.make(
-                    edtValor,
+                    binding.edtValor,
                     "Preencha todos os campos e adicione pelo menos uma pessoa",
                     Snackbar.LENGTH_LONG
                 ).show()
@@ -56,7 +53,7 @@ class MainActivity2 : AppCompatActivity() {
 
                 val valorTotal = valor * (porcentagem / 100) / pessoas
 
-                edtValorTotal.text = String.format("%.2f€", valorTotal)
+                binding.tvResultado.text = String.format("%.2f€", valorTotal)
             }
         }
     }
